@@ -8,7 +8,7 @@ class LightController:
 
     def __init__(self,ui):
         LightController.ui = ui
-        LightController.ledLamp = LedLamp('192.168.1.211')
+        LightController.ledLamp = LedLamp('10.20.6.101')
         LightController.ledLamp.setLamp('0000')
     
     @staticmethod

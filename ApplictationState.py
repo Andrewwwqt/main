@@ -6,3 +6,6 @@ class ModeApplication:
 
 class RobotMode:
     RobotMode = None
+
+class Toolstate:
+    Toolstate = None

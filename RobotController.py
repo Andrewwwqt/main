@@ -1,7 +1,8 @@
 from motion.core import RobotControl
 from states import AppStates, AppMods, RobotModes
 from ApplictationState import ApplicationState, ModeApplication, RobotMode
-
+from lightController import LightController
+import time
 
 
 class RobotController:
@@ -13,7 +14,7 @@ class RobotController:
     def Connect():
         if RobotController.robot.connect():
             if RobotController.robot.engage():
-                RobotController.robot.manualCartMode
+                RobotController.robot.manualCartMode()
                 RobotMode.RobotMode = RobotModes.CART
 
 
@@ -32,7 +33,23 @@ class RobotController:
             RobotController.robot.manualJointMode()
             RobotMode.RobotMode = RobotModes.JOINT
         else:
-            RobotController.robot.manualJointMode()
+            RobotController.robot.manualCartMode()
             RobotMode.RobotMode = RobotModes.CART
+
+    @staticmethod
+    def MoveToStart():
+        if RobotController.robot.connect():
+           RobotController.robot.moveToInitialPose()
+        time.sleep(5)
+        if RobotMode.RobotMode == RobotModes.CART:
+                RobotController.robot.manualCartMode()
+        if RobotMode.RobotMode == RobotModes.JOINT:
+            RobotController.robot.manualJointMode()
+        LightController.Wait()
+        
+    @staticmethod
+    def MoveToPointJ(waypoints):
+        RobotController.robot.addMoveToPointJ(waypoint_list= waypoints)
+        
 
         
