@@ -2,7 +2,7 @@ from motion.core import RobotControl
 from states import AppStates, AppMods, RobotModes
 from ApplictationState import ApplicationState, ModeApplication, RobotMode
 from lightController import LightController
-
+import time
 
 
 class RobotController:
@@ -39,11 +39,17 @@ class RobotController:
     @staticmethod
     def MoveToStart():
         if RobotController.robot.connect():
-           if RobotController.robot.moveToInitialPose():
-                if RobotMode.RobotMode == RobotModes.CART:
-                    RobotController.robot.manualCartMode()
-                if RobotMode.RobotMode == RobotModes.JOINT:
-                    RobotController.robot.manualJointMode()
-                LightController.Wait()
+           RobotController.robot.moveToInitialPose()
+        time.sleep(5)
+        if RobotMode.RobotMode == RobotModes.CART:
+                RobotController.robot.manualCartMode()
+        if RobotMode.RobotMode == RobotModes.JOINT:
+            RobotController.robot.manualJointMode()
+        LightController.Wait()
+        
+    @staticmethod
+    def MoveToPointJ(waypoints):
+        RobotController.robot.addMoveToPointJ(waypoint_list= waypoints)
+        
 
         

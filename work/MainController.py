@@ -8,6 +8,7 @@ from RobotSates import RobotStates
 from lightController import LightController
 from LogController import LogController
 from statistic import Statistic
+from AutoController import AutoController
 
 class MainController(QMainWindow):
     def __init__(self):
@@ -22,6 +23,7 @@ class MainController(QMainWindow):
         AXISController(self)
         RobotController()
         LogController(self)
+        AutoController(self)
 
         self.ButtonDisable.setEnabled(False)
         self.tabWidget.setTabVisible(0, False)
@@ -53,6 +55,7 @@ class MainController(QMainWindow):
          self.SaveLogs.clicked.connect(self.savelogs)
          self.pushobject.clicked.connect(self.ToolON)
          self.SaveLogs_2.clicked.connect(self.SaveStat)
+         
 
 
     def SaveStat(self):

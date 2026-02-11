@@ -110,14 +110,14 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>100</x>
       <y>350</y>
-      <width>591</width>
-      <height>401</height>
+      <width>641</width>
+      <height>411</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -573,100 +573,6 @@
         <string>RZ</string>
        </property>
       </widget>
-      <widget class="QFrame" name="frame_4">
-       <property name="geometry">
-        <rect>
-         <x>420</x>
-         <y>20</y>
-         <width>461</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Raised</enum>
-       </property>
-       <widget class="QLabel" name="label_37">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ось 1 </string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_38">
-        <property name="geometry">
-         <rect>
-          <x>90</x>
-          <y>10</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ось 2 </string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_39">
-        <property name="geometry">
-         <rect>
-          <x>170</x>
-          <y>10</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ось 3</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_40">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>10</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ось 4</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_41">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>10</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Ось 5</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_42">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>10</y>
-          <width>41</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>ось 6</string>
-        </property>
-       </widget>
-      </widget>
      </widget>
      <widget class="QLabel" name="label_19">
       <property name="geometry">
@@ -710,6 +616,214 @@
       </property>
       <property name="text">
        <string>Автоматический режим </string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="plainTextEdit_6">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>50</y>
+        <width>191</width>
+        <height>251</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_brack">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>200</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Брак</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_tree">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>150</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>3 категория</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_two">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>100</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>2 категория</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="add_one">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>50</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>1 категория</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="deleteElement">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>250</y>
+        <width>81</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить
+ последний 
+объект </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="clearElements">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>50</y>
+        <width>101</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Очистить 
+ список</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>310</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Сохранить в 
+ файл</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>310</y>
+        <width>201</width>
+        <height>41</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="stat_one">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>60</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>свободна</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="stat_two">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>свободна</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="stat_three">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>47</width>
+        <height>13</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>свободна</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="StartAutoSort">
+      <property name="geometry">
+       <rect>
+        <x>520</x>
+        <y>110</y>
+        <width>101</width>
+        <height>191</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Начать 
+движение по
+ заданным точкам </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ClearTars_1">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>50</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Новая ячейка </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ClearTars_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>100</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Новая ячейка </string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="ClearTars_3">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>150</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Новая ячейка </string>
       </property>
      </widget>
     </widget>
@@ -778,7 +892,7 @@
      <rect>
       <x>590</x>
       <y>790</y>
-      <width>361</width>
+      <width>701</width>
       <height>81</height>
      </rect>
     </property>
@@ -882,7 +996,7 @@
     <property name="geometry">
      <rect>
       <x>717</x>
-      <y>430</y>
+      <y>60</y>
       <width>121</width>
       <height>171</height>
      </rect>
@@ -922,7 +1036,7 @@
     <property name="geometry">
      <rect>
       <x>850</x>
-      <y>430</y>
+      <y>60</y>
       <width>451</width>
       <height>171</height>
      </rect>
@@ -962,7 +1076,7 @@
     <property name="geometry">
      <rect>
       <x>853</x>
-      <y>380</y>
+      <y>10</y>
       <width>311</width>
       <height>51</height>
      </rect>
@@ -1196,7 +1310,7 @@
     <property name="geometry">
      <rect>
       <x>720</x>
-      <y>630</y>
+      <y>260</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -1209,7 +1323,7 @@
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>630</y>
+      <y>260</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -1222,7 +1336,7 @@
     <property name="geometry">
      <rect>
       <x>720</x>
-      <y>670</y>
+      <y>300</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -1235,7 +1349,7 @@
     <property name="geometry">
      <rect>
       <x>850</x>
-      <y>670</y>
+      <y>300</y>
       <width>101</width>
       <height>31</height>
      </rect>

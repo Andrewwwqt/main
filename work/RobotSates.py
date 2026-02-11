@@ -22,7 +22,7 @@ class StateThread(QThread):
                 grad.append(math.degrees(item))
 
             self.Signal.emit(Temp,rad,tiks,grad,ActualToolPosition,ActualToolState)
-            time.sleep(1)
+            time.sleep(0.2)
 
 
 
@@ -48,7 +48,7 @@ class RobotStates:
         RobotStates.UI.rads.setText(str(round(RAD[0])) + "\t" + str(round(RAD[1])) + "\t" + str(round(RAD[2])) + "\t" + str(round(RAD[3])) + "\t" + str(round(RAD[4])) + "\t" + str(round(RAD[5])))
         RobotStates.UI.tiks.setText(str(round(TIKS[0])) + "\t" + str(round(TIKS[1])) + "\t" + str(round(TIKS[2])) + "\t" + str(round(TIKS[3])) + "\t" + str(round(TIKS[4])) + "\t" + str(round(TIKS[5])))
         RobotStates.UI.grad.setText(str(round(GRAD[0])) + "\t" + str(round(GRAD[1])) + "\t" + str(round(GRAD[2])) + "\t" + str(round(GRAD[3])) + "\t" + str(round(GRAD[4])) + "\t" + str(round(GRAD[5])))
-        RobotStates.UI.ActualTool.setText(str(round(TOOLPOSE[0])) + "\t" + str(round(TOOLPOSE[1])) + "\t" + str(round(TOOLPOSE[2])) + "\t" + str(round(TOOLPOSE[3])) + "\t" + str(round(TOOLPOSE[4])) + "\t" + str(round(TOOLPOSE[5])))
+        RobotStates.UI.ActualTool.setTexts(str(TOOLPOSE[0]) + "\t" + str(TOOLPOSE[1]) + "\t" + str(TOOLPOSE[2]) + "\t" + str(TOOLPOSE[3]) + "\t" + str(TOOLPOSE[4]) + "\t" + str(TOOLPOSE[5]))
         if tool:
             RobotStates.UI.label_55.setText("Закрыт")
         else:
