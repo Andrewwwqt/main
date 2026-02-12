@@ -11,38 +11,147 @@ import time
 
 
 class AutoThread(QThread):
-    LogSignal = pyqtSignal(str)
+    status_message = pyqtSignal(str)
     secSignal = pyqtSignal(int)
     updateTask = pyqtSignal()
-    
-    def __init__(self):
+
+    def __init__(self,tasks):
         super().__init__()
+        self.tasks = tasks
+
+        self.running = True
+
+        self.PICK_POSITION = [0,0,0,0,0,0]
+
+        self.CONTAINER_1_POSITIONS = [
+            [0.3, 0.2, 0.2, 3.14, 0.0, 1.57],
+            [0.3, 0.25, 0.2, 3.14, 0.0, 1.57],
+            [0.3, 0.2, 0.25, 3.14, 0.0, 1.57],
+            [0.3, 0.25, 0.25, 3.14, 0.0, 1.57]
+        ]
+        
+        
+        self.CONTAINER_2_POSITIONS = [
+            [0.4, -0.2, 0.2, 3.14, 0.0, 1.57],
+            [0.4, -0.25, 0.2, 3.14, 0.0, 1.57],
+            [0.4, -0.2, 0.25, 3.14, 0.0, 1.57],
+            [0.4, -0.25, 0.25, 3.14, 0.0, 1.57]
+        ]
+        
+        
+        self.CONTAINER_3_POSITIONS = [
+            [0.5, 0.2, 0.2, 3.14, 0.0, 1.57],
+            [0.5, 0.25, 0.2, 3.14, 0.0, 1.57],
+            [0.5, 0.2, 0.25, 3.14, 0.0, 1.57],
+            [0.5, 0.25, 0.25, 3.14, 0.0, 1.57]
+        ]
+
+
+        self.brack_POSITION = [0,0,0,0,0,0]
+
+        self.HOME_POSITION = [0,0,0,0,0,0]
 
     def run(self):
-        while True:
-            if not AutoController.All_tasks:
-                break
-            task = AutoController.All_tasks.pop(0)
-            match(task):
-                case "1_Категория":
-                    if AutoController.tara1 < 4:
-                        self.secSignal.emit(1)
-                    else:
-                        AutoController.UI.stat_one.setText("Заполнена")
-                case "2_Категория":
-                    if AutoController.tara2 < 4:
-                        self.secSignal.emit(2)
-                    else:
-                        AutoController.UI.stat_two.setText("Заполнена")
-                case "3_Категория":
-                    if AutoController.tara3 < 4:
-                        self.secSignal.emit(3)
-                    else:
-                        AutoController.UI.stat_three.setText("Заполнена")
-            self.updateTask.emit()
-            time.sleep(1)
-        ApplicationState.ApplicationState = AppStates.wait
-            
+        try:
+            for task in self.tasks:
+                if not self.running:
+                    break
+                
+                self.status_message.emit(f"Выполнение задачи: {task}")
+
+                self.status_message.emit("Перемещение к месту захвата")
+                waypoint_pick = [self.PICK_POSITION]
+                RobotController.robot.addMoveToPointL([waypoint_pick], 0.1, 0.2)
+                if RobotController.robot.play():
+                    time.sleep(2) 
+
+                self.status_message.emit("Захват объекта")
+                if RobotController.robot.toolON():
+                    time.sleep(0.5)  
+
+                lift_position = self.PICK_POSITION.copy()
+                lift_position[2] += 0.1  
+                waypoint_lift = [lift_position]
+                RobotController.robot.addMoveToPointL([waypoint_lift], 0.1, 0.2)
+                if RobotController.robot.play():
+                    time.sleep(1)
+
+                if task.startswith("1"):
+                        container_positions = self.CONTAINER_1_POSITIONS
+                        container_num = 1
+                elif task.startswith("2"):
+                        container_positions = self.CONTAINER_2_POSITIONS
+                        container_num = 2
+                elif task.startswith("3"):
+                        container_positions = self.CONTAINER_3_POSITIONS
+                        container_num = 3
+                else:  
+                    self.status_message.emit("Перемещение в зону брака")
+                    waypoint_reject = [self.brack_POSITION]
+                    RobotController.robot.addMoveToPointL([waypoint_reject], 0.1, 0.2)
+                    if RobotController.robot.play():
+                        time.sleep(2)
+
+                    RobotController.robot.toolOFF()
+                    time.sleep(0.5)
+                    self.secSignal.emit(4)
+                    self.updateTask.emit()
+                    continue
+
+                if container_num == 1:
+                    position_index = AutoController.tara1
+                elif container_num == 2:
+                    position_index = AutoController.tara2
+                elif container_num == 3:
+                    position_index = AutoController.tara3
+
+                self.status_message.emit(f"Перемещение к таре {container_num} позиция {position_index + 1}")
+                waypoint_container = [container_positions[position_index]]
+                RobotController.robot.addMoveToPointL([waypoint_container], 0.1, 0.2)
+                if RobotController.robot.play():
+                    time.sleep(2)
+
+                
+                self.status_message.emit("Опускание объекта")
+                lower_position = container_positions[position_index].copy()
+                lower_position[2] -= 0.05
+                waypoint_lower = [lower_position]
+                RobotController.robot.addMoveToPointL([waypoint_lower], 0.05, 0.1)
+                if RobotController.robot.play():
+                    time.sleep(1)
+                    
+                
+                self.status_message.emit("Освобождение объекта")
+                RobotController.robot.toolOFF()
+                time.sleep(0.5)
+                    
+                    
+                self.status_message.emit("Возврат в исходную позицию")
+                waypoint_home = [self.HOME_POSITION]
+                RobotController.robot.addMoveToPointL([waypoint_home], 0.1, 0.2)
+                if RobotController.robot.play():
+                    time.sleep(2)
+                    
+                self.secSignal.emit(container_num)
+                self.updateTask.emit()
+
+
+        except:
+            LogController.Log(LogType.INFO, LogOption.Move, "Ошибка в автоматическом режиме")
+            RobotController.robot.stop()
+            RobotController.robot.toolOFF()
+        
+        finally:
+            ApplicationState.ApplicationState = AppStates.wait
+            LightController.update()
+
+    def stop(self):
+        try:
+            RobotController.robot.stop()
+            RobotController.robot.toolOFF()
+        except:
+            pass
+
 
 class AutoController:
     tara1 = 0
@@ -98,30 +207,41 @@ class AutoController:
 
     @staticmethod
     def UpdateTasks():
+        print(AutoController.All_tasks)
         AutoController.UI.plainTextEdit_6.clear()
         for i, element in enumerate(AutoController.All_tasks):
             AutoController.UI.plainTextEdit_6.appendPlainText(f"{i+1}. {element}")
 
     def start(self):
         if ApplicationState.ApplicationState == AppStates.wait and ModeApplication.ModeApplication == AppMods.Auto:
-            waypoints = [0,0,0,0,0,0]
-            RobotController.MoveToPointJ(waypoints=waypoints)
             ApplicationState.ApplicationState = AppStates.On
             LightController.update()
             LogController.Log(LogType.INFO, LogOption.Move, "Начало автоматического распределения")
-            self.thread = AutoThread()
+            self.thread = AutoThread(AutoController.All_tasks)
             self.thread.secSignal.connect(self.UpdateUI)
             self.thread.updateTask.connect(self.UpdateTasks)
+            self.thread.status_message.connect(self.log)
             self.thread.start()
+
+    @staticmethod
+    def log(message):
+        LogController.Log(LogType.INFO, LogOption.Move, message)
+
 
     @staticmethod
     def UpdateUI(numer):
         if numer == 1:
+            AutoController.tara1 +=1
             Statistic.sec1 += 1
             Statistic.Update()
         elif numer == 2:
+            AutoController.tara2 +=1
             Statistic.sec2 += 1
             Statistic.Update()
         elif numer == 3:
+            AutoController.tara3 +=1
             Statistic.sec3 += 1
+            Statistic.Update()
+        elif numer == 4:
+            Statistic.brack += 1
             Statistic.Update()
