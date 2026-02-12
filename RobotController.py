@@ -47,9 +47,7 @@ class RobotController:
             RobotController.robot.manualJointMode()
         LightController.Wait()
         
-    @staticmethod
-    def MoveToPointJ(waypoints):
-        RobotController.robot.addMoveToPointJ(waypoint_list= waypoints)
+  
         
 
         
