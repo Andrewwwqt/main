@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1310</width>
-    <height>1026</height>
+    <width>1413</width>
+    <height>1075</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -610,7 +610,7 @@
        <rect>
         <x>20</x>
         <y>0</y>
-        <width>121</width>
+        <width>181</width>
         <height>31</height>
        </rect>
       </property>
@@ -831,8 +831,8 @@
    <widget class="QPlainTextEdit" name="plainTextEdit">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>790</y>
+      <x>20</x>
+      <y>830</y>
       <width>281</width>
       <height>81</height>
      </rect>
@@ -841,8 +841,8 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>770</y>
+      <x>20</x>
+      <y>810</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -854,8 +854,8 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>770</y>
+      <x>310</x>
+      <y>810</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -867,8 +867,8 @@
    <widget class="QPlainTextEdit" name="plainTextEdit_2">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>790</y>
+      <x>310</x>
+      <y>830</y>
       <width>281</width>
       <height>81</height>
      </rect>
@@ -877,8 +877,8 @@
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>770</y>
+      <x>600</x>
+      <y>810</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -890,8 +890,8 @@
    <widget class="QPlainTextEdit" name="plainTextEdit_3">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>790</y>
+      <x>600</x>
+      <y>830</y>
       <width>701</width>
       <height>81</height>
      </rect>
@@ -900,8 +900,8 @@
    <widget class="QPlainTextEdit" name="plainTextEdit_4">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>900</y>
+      <x>20</x>
+      <y>940</y>
       <width>281</width>
       <height>81</height>
      </rect>
@@ -910,8 +910,8 @@
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>880</y>
+      <x>20</x>
+      <y>920</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -923,8 +923,8 @@
    <widget class="QPlainTextEdit" name="plainTextEdit_5">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>900</y>
+      <x>310</x>
+      <y>940</y>
       <width>281</width>
       <height>81</height>
      </rect>
@@ -933,8 +933,8 @@
    <widget class="QLabel" name="label_16">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>880</y>
+      <x>310</x>
+      <y>920</y>
       <width>221</width>
       <height>16</height>
      </rect>
@@ -946,8 +946,8 @@
    <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>900</y>
+      <x>610</x>
+      <y>940</y>
       <width>351</width>
       <height>31</height>
      </rect>
@@ -956,8 +956,8 @@
    <widget class="QLabel" name="label_17">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>880</y>
+      <x>610</x>
+      <y>920</y>
       <width>201</width>
       <height>16</height>
      </rect>
@@ -969,8 +969,8 @@
    <widget class="QPushButton" name="SaveLogs">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>930</y>
+      <x>610</x>
+      <y>970</y>
       <width>81</width>
       <height>31</height>
      </rect>
@@ -982,8 +982,8 @@
    <widget class="QLabel" name="statusSave">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>930</y>
+      <x>700</x>
+      <y>970</y>
       <width>191</width>
       <height>31</height>
      </rect>
@@ -997,7 +997,7 @@
      <rect>
       <x>717</x>
       <y>60</y>
-      <width>121</width>
+      <width>126</width>
       <height>171</height>
      </rect>
     </property>
@@ -1090,7 +1090,7 @@
      <rect>
       <x>270</x>
       <y>30</y>
-      <width>71</width>
+      <width>73</width>
       <height>181</height>
      </rect>
     </property>
@@ -1350,12 +1350,51 @@
      <rect>
       <x>850</x>
       <y>300</y>
-      <width>141</width>
+      <width>461</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="video">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>360</y>
+      <width>491</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="turnCAM">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>450</y>
+      <width>131</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Включить камеру</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="turnoffCAM">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>370</y>
+      <width>131</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Выключить камеру</string>
     </property>
    </widget>
   </widget>
@@ -1364,8 +1403,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1310</width>
-     <height>21</height>
+     <width>1413</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
